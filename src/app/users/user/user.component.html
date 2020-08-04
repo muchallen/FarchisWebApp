@@ -1,0 +1,23 @@
+<h3> Register </h3>
+
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+    <div class="form-group">
+        <input name="fullname" #fullname="ngModel" [(ngModel)]="service.formData.fullname" class="form-control" placeholder="Full Name" required>
+        <div *ngIf="fullname.invalid && fullname.touched" class="validation-error">*this field is required</div>
+    </div>
+    <div class="form-group">
+        <input name="email" #email="ngModel" [(ngModel)]="service.formData.email" class="form-control" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <input name="mobile" #mobile="ngModel" [(ngModel)]="service.formData.mobile" class="form-control" placeholder="Mobile">
+    </div>
+    <div class="form-group">
+        <input name="idnumber" #idnumber="ngModel" [(ngModel)]="service.formData.idnumber" class="form-control" placeholder="ID Number">
+    </div>
+    <div class="form-group">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">Save</button>
+    </div>
+
+</form>
+

@@ -1,0 +1,24 @@
+
+<div class="card p-2">
+<table class="table table-sm m-2 table-hover">
+    <thead>
+        <th>Name</th>
+        <th>Id Number</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Action</th>
+    </thead>
+
+<tbody>
+    <tr *ngFor="let user of list">
+        <td (click)="onEdit(user)">{{user.fullname}}</td>
+        <td (click)="onEdit(user)">{{user.email}}</td>
+        <td (click)="onEdit(user)">{{user.idnumber}}</td>
+        <td (click)="onEdit(user)">{{user.mobile}}</td>
+        <td (click)="onDelete(user.id)"><button class=" btn btn-sm btn-danger">delete</button></td>
+
+    </tr>
+</tbody>
+
+</table>
+</div>

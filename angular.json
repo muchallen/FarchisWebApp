@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css" 
             ],
             "scripts": []
           },
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Farchis"
+    }
+  },
+  "defaultProject": "Farchis",
+  "cli": {
+    "analytics": "67b4b1ab-e645-448d-be40-0fe2a0578c54"
+  }
 }
