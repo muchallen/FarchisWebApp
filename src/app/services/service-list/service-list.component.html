@@ -1,0 +1,24 @@
+
+<div class="card p-2">
+    <table class="table table-sm m-2 table-hover">
+        <thead>
+            <th>Name</th>
+            <th>Part</th>
+            <th>Details</th>
+            <th>Date</th>
+            <th>Action</th>
+        </thead>
+    
+    <tbody>
+        <tr *ngFor="let quot of list">
+            <td (click)="onView(quot)">{{quot.name}}</td>
+            <td (click)="onView(quot)">{{quot.parts}}</td>
+            <td (click)="onView(quot)">{{quot.details}}</td>
+            <td (click)="onView(quot)">{{quot.date}}</td>
+            <td (click)="onDelete(quot.id)"><button class=" btn btn-sm btn-danger">delete</button></td>
+    
+        </tr>
+    </tbody>
+    
+    </table>
+    </div>

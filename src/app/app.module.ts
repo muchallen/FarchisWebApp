@@ -14,13 +14,37 @@ import {UsersService} from './shared/users.service'
 import {FormsModule} from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { TowingComponent } from './towing/towing.component';
+import { ReportsComponent } from './reports/reports.component';
+
+import { ServicesComponent } from './services/services.component';
+import { RouterModule } from '@angular/router';
+import { CarsComponent } from './cars/cars.component';
+import { VehichleComponent } from './cars/vehichle/vehichle.component';
+import { VehichleListComponent } from './cars/vehichle-list/vehichle-list.component';
+import { ServiceListComponent } from './services/service-list/service-list.component';
+import { TowingListComponent } from './towing/towing-list/towing-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     UserslistComponent,
-    UserComponent
+    UserComponent,
+    TowingComponent,
+    ReportsComponent,
+   
+    ServicesComponent,
+   
+    CarsComponent,
+   
+    VehichleComponent,
+   
+    VehichleListComponent,
+   
+    ServiceListComponent,
+   
+    TowingListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +54,16 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), 
+    RouterModule.forRoot([
+      {path:'',component:UsersComponent},
+      {path:'towing',component:TowingComponent},
+      {path:'services',component:ServicesComponent},
+      {path:'reports',component:ReportsComponent},
+      {path:'cars',component:CarsComponent},
+
+    ]
+
+    )
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]

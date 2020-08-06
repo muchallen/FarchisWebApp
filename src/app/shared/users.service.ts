@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user.model';
+import { Car } from './car.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -7,6 +8,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class UsersService {
   formData : User
+  carFormData : Car
 
   constructor(private firestore:AngularFirestore) { }
 
@@ -14,5 +16,12 @@ export class UsersService {
     return this.firestore.collection('users').snapshotChanges();
   }
 
+  getCars(){
+    return this.firestore.collection('cars').snapshotChanges();
+  }
+
+  getServices(){
+    return this.firestore.collection('services').snapshotChanges();
+  }
 
 }
