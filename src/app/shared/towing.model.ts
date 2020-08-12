@@ -1,10 +1,9 @@
 export class Towing {
-    name:string;
-    type:string;
+    id:string
+    vehicle:string;
     location:string;
-    registration:string;
-    color:string;
-    contactName:string;
+    contactPerson:string;
     contactNumber:string;
-    naration:string
+    date:string;
+    narration:string;
 }

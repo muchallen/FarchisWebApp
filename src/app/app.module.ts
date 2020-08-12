@@ -13,6 +13,8 @@ import {UsersService} from './shared/users.service'
 
 import {FormsModule} from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule, MatDialog} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 import { ToastrModule } from 'ngx-toastr';
 import { TowingComponent } from './towing/towing.component';
 import { ReportsComponent } from './reports/reports.component';
@@ -24,8 +26,12 @@ import { VehichleComponent } from './cars/vehichle/vehichle.component';
 import { VehichleListComponent } from './cars/vehichle-list/vehichle-list.component';
 import { ServiceListComponent } from './services/service-list/service-list.component';
 import { TowingListComponent } from './towing/towing-list/towing-list.component';
+import { CustomDialogComponent } from './custom-dialog/custom-dialog.component';
 
 @NgModule({
+  entryComponents:[
+    CustomDialogComponent
+  ],
   declarations: [
     AppComponent,
     UsersComponent,
@@ -44,10 +50,14 @@ import { TowingListComponent } from './towing/towing-list/towing-list.component'
    
     ServiceListComponent,
    
-    TowingListComponent
+    TowingListComponent,
+   
+    CustomDialogComponent
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
+    MatButtonModule,
     AppRoutingModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,

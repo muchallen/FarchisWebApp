@@ -1,7 +1,10 @@
 export class Quotation {
     id:string
-    name:string;
-    parts:string;
+    service:string;
     details:string;
+    email:String;
+    contact:string;
+    mobile:string;
     date:string;
+    vehicle:string;
 }

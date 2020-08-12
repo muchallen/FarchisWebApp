@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class VehichleComponent implements OnInit {
 
-  constructor(private firestore:AngularFirestore, private service:UsersService,private toastr:ToastrService ) { }
+  constructor(private firestore:AngularFirestore, public service:UsersService,private toastr:ToastrService ) { }
 
   ngOnInit(): void {
     this.resetForm();
@@ -21,14 +21,13 @@ export class VehichleComponent implements OnInit {
     if(form!=null)
       form.resetForm()
     this.service.carFormData={
-      id:null,
-      name:'',
-      model:'',
+      id:'',
+      vehicle:'',
       year:'',
       regnumber:'',
       color:'',
       ownerName:'',
-      ownerMobile:'',
+      ownerMobile:''
     }
   }
 

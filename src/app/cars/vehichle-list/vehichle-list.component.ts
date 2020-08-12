@@ -14,14 +14,14 @@ export class VehichleListComponent implements OnInit {
 
   list:Car[]
 
-  constructor(private service:UsersService,private firestore:AngularFirestore, private toastr:ToastrService) { }
+  constructor(public service:UsersService,private firestore:AngularFirestore, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.service.getCars().subscribe(actionArray=>{
       this.list = actionArray.map(item=>{
         return {
           id:item.payload.doc.id,
-          ...item.payload.doc.data() } as Car
+          ...item.payload.doc.data() as {} } as Car
         })
       
     })
@@ -33,7 +33,7 @@ export class VehichleListComponent implements OnInit {
 
   onDelete(id:string){
     if(confirm('Are you sure you want to delete this record !')){
-      this.firestore.doc('users/'+id).delete();
+      this.firestore.doc('cars/'+id).delete();
       this.toastr.warning('Record Deleted', 'Farchis')
     }
   }

@@ -1,1 +1,27 @@
-<p>towing-list works!</p>
+
+<div class="card p-2">
+    <table class="table table-sm m-2 table-hover">
+        <thead>
+            <th>Vehicle</th>
+            <th>Damage Condition</th>
+            <th>Location</th>
+            <th>Contact Person</th>
+            <th>Contact #</th>
+            <th>Date</th>
+            <th>Action</th>
+        </thead>
+    
+    <tbody>
+        <tr *ngFor="let tow of towing">
+            <td (click)="onView(tow)">{{tow.vehicle}}</td>
+            <td (click)="onView(tow)">{{tow.narration}}</td>
+            <td (click)="onView(tow)">{{tow.location}}</td>
+            <td (click)="onView(tow)">{{tow.contactPerson}}</td>
+            <td (click)="onView(tow)">{{tow.contactNumber}}</td>
+            <td (click)="onView(tow)">{{tow.date}}</td>
+            <td (click)="onDelete(tow.id)"><button class=" btn btn-sm btn-danger">delete</button></td>
+        </tr>
+    </tbody>
+    
+    </table>
+    </div>

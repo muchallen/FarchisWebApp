@@ -21,7 +21,10 @@ export class UsersService {
   }
 
   getServices(){
-    return this.firestore.collection('services').snapshotChanges();
+    return this.firestore.collection('servs').snapshotChanges();
+  }
+  getTowing(){
+    return this.firestore.collection('tows').snapshotChanges();
   }
 
 }

@@ -1,7 +1,6 @@
 export class Car {
     id:string
-    name:string;
-    model:string;
+    vehicle:string;
     year:string;
     regnumber:string;
     color:string;

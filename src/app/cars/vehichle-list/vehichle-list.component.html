@@ -3,18 +3,20 @@
     <table class="table table-sm m-2 table-hover">
         <thead>
             <th>Name</th>
-            <th>Model</th>
+            <th>Reg#</th>
             <th>Color</th>
             <th>Owner</th>
+            <th>Year</th>
             <th>Action</th>
         </thead>
     
     <tbody>
         <tr *ngFor="let car of list">
-            <td (click)="onEdit(car)">{{car.name}}</td>
-            <td (click)="onEdit(car)">{{car.model}}</td>
+            <td (click)="onEdit(car)">{{car.vehicle}}</td>
+            <td (click)="onEdit(car)">{{car.regnumber}}</td>
             <td (click)="onEdit(car)">{{car.color}}</td>
             <td (click)="onEdit(car)">{{car.ownerName}}</td>
+            <td (click)="onEdit(car)">{{car.year}}</td>
             <td (click)="onDelete(car.id)"><button class=" btn btn-sm btn-danger">delete</button></td>
     
         </tr>
