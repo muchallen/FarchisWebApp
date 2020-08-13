@@ -8,6 +8,7 @@
             <th>Contact Name</th>
             <th>Contact #</th>
             <th>Date</th>
+            <th>Image</th>
             <th>Action</th>
         </thead>
     
@@ -19,6 +20,7 @@
             <td (click)="onView(quot)">{{quot.contact}}</td>
             <td (click)="onView(quot)">{{quot.mobile}}</td>
             <td (click)="onView(quot)">{{quot.date}}</td>
+            <td (click)="imageView(quote.image)"><button class=" btn btn-sm btn-success">view image</button></td>
             <td (click)="onDelete(quot.id)"><button class=" btn btn-sm btn-danger">delete</button></td>
     
         </tr>

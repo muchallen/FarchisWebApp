@@ -7,4 +7,5 @@ export class Quotation {
     mobile:string;
     date:string;
     vehicle:string;
+    image:string;
 }

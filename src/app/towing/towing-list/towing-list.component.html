@@ -8,6 +8,7 @@
             <th>Contact Person</th>
             <th>Contact #</th>
             <th>Date</th>
+            <th>Image</th>
             <th>Action</th>
         </thead>
     
@@ -19,6 +20,7 @@
             <td (click)="onView(tow)">{{tow.contactPerson}}</td>
             <td (click)="onView(tow)">{{tow.contactNumber}}</td>
             <td (click)="onView(tow)">{{tow.date}}</td>
+            <td (click)="imageView(tow)"><button class=" btn btn-sm btn-success">view image</button></td>
             <td (click)="onDelete(tow.id)"><button class=" btn btn-sm btn-danger">delete</button></td>
         </tr>
     </tbody>

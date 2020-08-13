@@ -6,4 +6,5 @@ export class Towing {
     contactNumber:string;
     date:string;
     narration:string;
+    image:string
 }
