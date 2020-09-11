@@ -1,0 +1,106 @@
+
+<div class="d-100">
+    <div class="m-auto col-md-7">
+        <div class="card p-3 text-center">
+        <h3 >Add Event</h3>
+<br>
+       
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="id"  #id="ngModel" [(ngModel)]="service.eventForm.id" > 
+    <div class="form-group mb-2">
+    <label for="event">Event Name</label>
+    <input name="event"  #event="ngModel" [(ngModel)]="service.eventForm.event"  class="form-control" required required>
+       
+    </div>
+    <div class="form-group mb-2">
+        <label for="venue">Venue</label>
+        <input name="venue" #venue="ngModel"  [(ngModel)]="service.eventForm.venue" class="form-control" required>
+    </div>
+
+    <div class="form-group mb-2">
+        <label for="details">Event Details</label>
+        <textarea  name="details" #details="ngModel" [(ngModel)]="service.eventForm.details" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+    </div>
+    <div class="form-group mb-4">
+        <label for="date-time">Date and Time</label>
+        <input class="form-control" name="date" #date="ngModel" [(ngModel)]="service.eventForm.date"  [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" required>
+        <owl-date-time #dt1></owl-date-time>
+        </div>
+    <div class="input-group mb-5">
+        <div class="custom-file">
+          <input type="file" (change)="addImage($event)"class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+          <label class="custom-file-label" for="inputGroupFile04"><button class="btn btn-primary"> choose image</button></label>
+        </div>
+      </div>
+    
+    <div class="form-group ">
+        <button type="submit"  [disabled]="!form.valid" class="btn btn-lg btn-block btn-info">Submit</button>
+    </div>
+
+</form>
+</div>
+    </div>
+
+    </div>
+    
+        <div class="card p-3 ">
+            <div class="text-center"> <h3> Events List</h3> </div>
+            
+            <p-table #tt [columns]="cols" [value]="list" [paginator]="true" [rows]="1">
+                <ng-template pTemplate="caption">
+                    <div  >
+                    <div  style="margin: auto;">
+                        <i class="pi pi-search" style="display: inline;float: none;" style="margin:4px 4px 0 0"></i>
+                    <input class="form-control"  type="text" pInputText size="50" placeholder="Global Search" (input)="tt.filterGlobal($event.target.value, 'contains')" >
+                    </div>
+                </div>
+                    
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                            <p>{{col.header}} <p-sortIcon *ngIf="col.header!='Action' " [field]="col.field"></p-sortIcon></p>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                            <input *ngSwitchCase="'vin'" pInputText type="text" (input)="tt.filter($event.target.value, col.field, col.filterMatchMode)">
+                            <div *ngSwitchCase="'year'">
+                                {{yearFilter}}
+                                <i class="pi pi-times" (click)="yearFilter=null;tt.filter(null, col.field, col.filterMatchMode)"></i>
+                                <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="yearFilter" [min]="1970" [max]="2010" (onChange)="onYearChange($event, dt)"></p-slider>
+                            </div>
+                            <p-dropdown *ngSwitchCase="'brand'" [options]="brands" [style]="{'width':'100%'}" (onChange)="tt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                            <p-multiSelect *ngSwitchCase="'color'" [options]="colors" defaultLabel="All Colors" (onChange)="tt.filter($event.value, col.field, 'in')"></p-multiSelect>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr  [pSelectableRow]="rowData">
+                        <td   *ngFor="let col of columns" (click)="onEdit(col)">
+                            <p *ngIf="col.field!='action'">{{rowData[col.field]}}</p>
+                            <p *ngIf="col.field=='action'"><button (click)="onDelete(rowData['id'])" class=" btn btn-sm btn-danger">delete</button></p>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    
+
+
+
+
+<!-- <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+    <div class="form-group">
+        <input name="fullname" #fullname="ngModel" [(ngModel)]="service.formData.fullname" class="form-control" placeholder="Full Name" required>
+        <div *ngIf="fullname.invalid && fullname.touched" class="validation-error">*this field is required</div>
+    </div>
+    <div class="form-group">
+        <input name="email" #email="ngModel" [(ngModel)]="service.formData.email" class="form-control" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <input name="mobile" #mobile="ngModel" [(ngModel)]="service.formData.mobile" class="form-control" placeholder="Mobile">
+    </div>
+
+</form> -->

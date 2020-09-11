@@ -1,0 +1,28 @@
+
+<div class="d-100">
+    <div class="m-auto col-md-6">
+        <div class="card p-3 text-center">
+        <h3 >Login Here</h3>
+<br>
+       
+<form class="p-5" #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="id"  #id="ngModel" [(ngModel)]="service.login.id" > 
+    <div class="form-group m-4">
+    <label for="event">Username</label>
+    <input name="username"  #username="ngModel" [(ngModel)]="service.login.username"  class="form-control" required>   
+    </div>
+    <div class="form-group m-4">
+        <label for="venue">Password</label>
+        <input name="password" #password="ngModel" type="password" [(ngModel)]="service.login.password" class="form-control">
+    </div>
+    <div class="form-group ">
+        <button type="submit"  class="btn btn-success">Login</button>
+        <a class="btn btn-info text-white ml-3">Register</a>
+     
+    </div>
+
+</form>
+</div>
+</div>
+
+</div>

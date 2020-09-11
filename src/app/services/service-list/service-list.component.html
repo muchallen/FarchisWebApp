@@ -1,0 +1,76 @@
+
+<div class="card p-2">
+    <!-- <table class="table table-sm m-2 table-hover">
+        <thead>
+            <th>Vehicle</th>
+            <th>Service</th>
+            <th>Details</th>
+            <th>Contact Name</th>
+            <th>Contact #</th>
+            <th>Date</th>
+            <th>Image</th>
+            <th>Action</th>
+        </thead>
+    
+    <tbody>
+        <tr *ngFor="let quot of list">
+            <td (click)="onView(quot)">{{quot.vehicle}}</td>
+            <td (click)="onView(quot)">{{quot.service}}</td>
+            <td (click)="onView(quot)">{{quot.details}}</td>
+            <td (click)="onView(quot)">{{quot.contact}}</td>
+            <td (click)="onView(quot)">{{quot.mobile}}</td>
+            <td (click)="onView(quot)">{{quot.date}}</td>
+            <td (click)="imageView(quote.image)"><button class=" btn btn-sm btn-success">view image</button></td>
+            <td (click)="onDelete(quot.id)"><button class=" btn btn-sm btn-danger">delete</button></td>
+    
+        </tr>
+    </tbody>
+    
+    </table> -->
+
+<div class="card p-2">
+    <p-table #tt [columns]="cols" [value]="list" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="caption">
+            <div  >
+            <div  style=" width: 655px;margin: auto;">
+                <i class="pi pi-search" style="display: inline;float: none;" style="margin:4px 4px 0 0"></i>
+            <input class="form-control" style=" display: inline;float: none;" type="text" pInputText size="50" placeholder="Global Search" (input)="tt.filterGlobal($event.target.value, 'contains')" >
+            </div>
+        </div>
+            
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                   <p>{{col.header}} <p-sortIcon *ngIf="col.header!='Image' && col.header!='Action' " [field]="col.field"></p-sortIcon></p> 
+                </th>
+                
+            </tr>
+            <tr>
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                    <input *ngSwitchCase="'vin'" pInputText type="text" (input)="tt.filter($event.target.value, col.field, col.filterMatchMode)">
+                    <div *ngSwitchCase="'year'">
+                        {{yearFilter}}
+                        <i class="pi pi-times" (click)="yearFilter=null;tt.filter(null, col.field, col.filterMatchMode)"></i>
+                        <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="yearFilter" [min]="1970" [max]="2010" (onChange)="onYearChange($event, dt)"></p-slider>
+                    </div>
+                    <p-dropdown *ngSwitchCase="'brand'" [options]="brands" [style]="{'width':'100%'}" (onChange)="tt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                    <p-multiSelect *ngSwitchCase="'color'" [options]="colors" defaultLabel="All Colors" (onChange)="tt.filter($event.value, col.field, 'in')"></p-multiSelect>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body"  let-rowData let-columns="columns">
+            <tr  [pSelectableRow]="rowData"  >
+                <td   *ngFor="let col of columns"  >
+                    <p *ngIf="col.field!='action'&& col.field!='image'">{{rowData[col.field]}}</p>
+                    <p *ngIf="col.field=='action'"><button (click)="onDelete(rowData['id'])" class=" btn btn-sm btn-danger">delete</button></p>
+                    <p *ngIf="col.field=='image'"><button (click)="openDialog(rowData['image'])" class=" btn btn-sm btn-success">view image</button></p>
+                </td>
+                <!-- <td (click)="imageView(quote.image)"><button class=" btn btn-sm btn-success">view image</button></td>
+                <td (click)="onDelete()"><button class=" btn btn-sm btn-danger">delete</button></td> -->
+            </tr>
+        </ng-template>
+    </p-table>
+    
+    </div>
+    </div>

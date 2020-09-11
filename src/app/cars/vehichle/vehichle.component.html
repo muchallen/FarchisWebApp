@@ -1,0 +1,29 @@
+<h3>  Vehicle Details</h3>
+
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.carFormData.id">
+    <div class="form-group">
+        <input name="name" #name="ngModel" [(ngModel)]="service.carFormData.vehicle" class="form-control" placeholder="Vehicle Name" required>
+        <div *ngIf="name.invalid && name.touched" class="validation-error">*this field is required</div>
+    </div>
+    <div class="form-group">
+        <input name="year" #year="ngModel" [(ngModel)]="service.carFormData.year" class="form-control" placeholder="Make Year">
+    </div>
+    <div class="form-group">
+        <input name="regnumber" #regnumber="ngModel" [(ngModel)]="service.carFormData.regnumber" class="form-control" placeholder="Vehicle Reg Number">
+    </div>
+    <div class="form-group">
+        <input name="color" #color="ngModel" [(ngModel)]="service.carFormData.color" class="form-control" placeholder="Color e.g white">
+    </div>
+    <div class="form-group">
+        <input name="ownerName" #ownerName="ngModel" [(ngModel)]="service.carFormData.ownerName" class="form-control" placeholder="Owner Full Name">
+    </div>
+    <div class="form-group">
+        <input name="ownerMobile" #ownerMobile="ngModel" [(ngModel)]="service.carFormData.ownerMobile" class="form-control" placeholder="Owner Mobile No.">
+    </div>
+    <div class="form-group">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">Save</button>
+    </div>
+
+</form>
+
